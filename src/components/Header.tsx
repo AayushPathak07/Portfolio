@@ -1,8 +1,7 @@
-import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { HiMenu, HiX } from 'react-icons/hi';
-import { FaCode } from 'react-icons/fa';
-
+import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { HiMenu, HiX } from "react-icons/hi";
+import myLogo from "../assets/aayush.jpg";
 interface HeaderProps {
   activeSection: string;
 }
@@ -13,14 +12,14 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
   const location = useLocation();
 
   const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'work', label: 'Work' },
-    { id: 'about', label: 'About' },
-    { id: 'blog', label: 'Blog' },
+    { id: "home", label: "Home" },
+    { id: "work", label: "Work" },
+    { id: "about", label: "About" },
+    { id: "blog", label: "Blog" },
   ];
 
   const handleNavClick = (sectionId: string) => {
-    if (location.pathname !== '/') {
+    if (location.pathname !== "/") {
       navigate(`/#${sectionId}`);
     } else {
       const element = document.getElementById(sectionId);
@@ -29,7 +28,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
         const elementPosition = element.offsetTop - headerOffset;
         window.scrollTo({
           top: elementPosition,
-          behavior: 'smooth',
+          behavior: "smooth",
         });
       }
     }
@@ -42,8 +41,13 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-primary-500 rounded-lg flex items-center justify-center">
-                <FaCode className="text-white" size={18} />
+              {/* Replace icon with your own image */}
+              <div className="w-8 h-8 rounded-lg overflow-hidden">
+                <img
+                  src={myLogo}
+                  alt="Logo"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <h1 className="text-xl font-bold text-gray-900 font-serif">
                 Aayush Pathak
@@ -59,8 +63,8 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
                   onClick={() => handleNavClick(item.id)}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                     activeSection === item.label
-                      ? 'bg-primary-500 text-white shadow-lg'
-                      : 'text-gray-700 hover:text-primary-600 hover:bg-primary-50'
+                      ? "bg-primary-500 text-white shadow-lg"
+                      : "text-gray-700 hover:text-primary-600 hover:bg-primary-50"
                   }`}
                 >
                   {item.label}
@@ -89,8 +93,8 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
                   onClick={() => handleNavClick(item.id)}
                   className={`block px-4 py-3 rounded-lg text-base font-medium w-full text-left transition-all duration-300 ${
                     activeSection === item.label
-                      ? 'bg-primary-500 text-white'
-                      : 'text-gray-700 hover:text-primary-600 hover:bg-primary-50'
+                      ? "bg-primary-500 text-white"
+                      : "text-gray-700 hover:text-primary-600 hover:bg-primary-50"
                   }`}
                 >
                   {item.label}
