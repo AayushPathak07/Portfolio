@@ -19,23 +19,29 @@ const Projects: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 md:items-start">
           {projects.map((project: ProjectPost) => {
             const technologies = getTechnologiesByNames(project.technologies);
             
+            const showImage = project.image && project.image !== '/images/your-project-image.png';
+            const showGithub = project.githubUrl && project.githubUrl !== 'https://github.com/yourusername/your-repo';
+            const showLiveUrl = project.liveUrl && project.liveUrl !== 'https://your-project-live-url.com';
+
             return (
             <Link
               key={project.slug}
               to={`/projects/${project.slug}`}
               className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group"
             >
-              <div className="aspect-video overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-              </div>
+              {showImage && (
+                <div className="aspect-video overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+              )}
               
               <div className="p-6">
                 <div className="flex items-center justify-between mb-3">
@@ -68,26 +74,30 @@ const Projects: React.FC = () => {
                 
                 <div className="flex items-center justify-between">
                   <div className="flex space-x-4">
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center space-x-2 text-gray-600 hover:text-primary-600 transition-colors"
-                      onClick={(e) => e.stopPropagation()} // Prevent navigation to detail page
-                    >
-                      <FaGithub size={18} />
-                      <span className="font-medium">Code</span>
-                    </a>
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center space-x-2 text-primary-600 hover:text-primary-700 transition-colors"
-                      onClick={(e) => e.stopPropagation()} // Prevent navigation to detail page
-                    >
-                      <HiExternalLink size={18} />
-                      <span className="font-medium">Live Demo</span>
-                    </a>
+                    {showGithub && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center space-x-2 text-gray-600 hover:text-primary-600 transition-colors"
+                        onClick={(e) => e.stopPropagation()} // Prevent navigation to detail page
+                      >
+                        <FaGithub size={18} />
+                        <span className="font-medium">Code</span>
+                      </a>
+                    )}
+                    {showLiveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center space-x-2 text-primary-600 hover:text-primary-700 transition-colors"
+                        onClick={(e) => e.stopPropagation()} // Prevent navigation to detail page
+                      >
+                        <HiExternalLink size={18} />
+                        <span className="font-medium">Live Demo</span>
+                      </a>
+                    )}
                   </div>
                   <div className="text-primary-600 font-medium text-sm">
                     View Details →

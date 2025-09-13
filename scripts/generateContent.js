@@ -45,7 +45,7 @@ async function generateBlogPosts() {
         readTime: parseInt(matterResult.data.readTime) || 5,
         category: matterResult.data.category || 'Technology',
         tags: matterResult.data.tags || [],
-        image: matterResult.data.image ? `/${matterResult.data.image}` : 'https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=600',
+        image: matterResult.data.image || '',
         featured: Boolean(matterResult.data.featured),
       };
     })
@@ -79,10 +79,10 @@ async function generateProjects() {
         excerpt: matterResult.data.excerpt || 'No description available.',
         content: matterResult.content,
         contentHtml, 
-        image: matterResult.data.image ? `/${matterResult.data.image}` : 'https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=600',
+        image: matterResult.data.image || '',
         technologies: matterResult.data.technologies || [],
-        githubUrl: matterResult.data.githubUrl || '#',
-        liveUrl: matterResult.data.liveUrl || '#',
+        githubUrl: matterResult.data.githubUrl || '',
+        liveUrl: matterResult.data.liveUrl || '',
         date: matterResult.data.date || new Date().getFullYear().toString(),
         category: matterResult.data.category || 'Development',
         featured: Boolean(matterResult.data.featured),

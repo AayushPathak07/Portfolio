@@ -6,7 +6,6 @@ readTime: 6
 author: "Aayush Pathak"
 category: "Case Study"
 tags: ["DevOps", "Infrastructure", "Automation", "Digital Transformation", "On-Prem"]
-image: "images/Kidcentral_DevOps/blog-cover.png"
 featured: true
 slug: "from-homelab-to-production-devops-foundation"
 ---
@@ -35,7 +34,7 @@ Finally, I replaced costly outsourced integrations with an internal system that 
 
 The results: cost savings, faster deployments, live dashboards for managers, and a cultural shift from “buy first” to “try to build first.”
 
-![Before vs After IT/DevOps](/images/Kidcentral_DevOps/kidcentral_visual1.png)
+
 
 ---
 
@@ -67,7 +66,7 @@ As the environment grew, I added a lightweight management layer that made it pos
 
 Automation was another layer. Scheduled jobs handled recurring tasks, while event-driven triggers responded to real-world signals like incoming orders or updated data. The system went from manual to largely self-sufficient.
 
-![Infrastructure Flow](/images/Kidcentral_DevOps/kidcentral_visual2.png)
+
 
 ---
 
@@ -77,7 +76,7 @@ Reliability became the next challenge. If infrastructure is invisible when it wo
 
 I set up external monitoring so that even if our internal systems were offline, the status page stayed up. This gave leadership visibility and gave IT a way to show transparency.
 
-I also tied incident reporting directly into the tools the team already used every day. If something broke, they didn’t need to learn a new incident system — they could report, update, and close issues from inside their normal workflow. That cut response times dramatically and reduced friction.
+I also tied incident reporting directly into the tools the team already used every day. If something broke, they didn’t need to learn a new incident system — they could report, update, and close issues from inside their normal workflow. That cut response times dramatically diminished and reduced friction.
 
 ---
 
@@ -103,7 +102,7 @@ Managers had real-time dashboards instead of emailed SQL reports.
 
 And the culture shifted. The default wasn’t “what do we buy,” it was “can we build this ourselves?”
 
-![Results Summary](/images/Kidcentral_DevOps/kidcentral_visual3.png)
+
 
 ---
 

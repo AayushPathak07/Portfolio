@@ -6,6 +6,7 @@ date: "2025-09-13"
 readTime: 5
 category: "Software Development"
 tags: ["AI", "Elasticsearch", "FastAPI", "React"]
+technologies: ["AI", "Elasticsearch", "FastAPI", "React"]
 image: "/images/beyond-calories.png"
 featured: true
 slug: "beyondcalories-ca"
@@ -13,9 +14,9 @@ slug: "beyondcalories-ca"
 
 # BeyondCalories.ca
 
-BeyondCalories.ca was built during a hackathon to explore how artificial intelligence and modern search technologies can help users find the perfect recipe. The platform indexed roughly 500 k recipes and stored their relationships in an inverted graph so that queries on pantry ingredients and preferences could return relevant suggestions【835914650520473†L28-L33】. The architecture consisted of:
+BeyondCalories.ca was built during a hackathon to explore how artificial intelligence and modern search technologies can help users find the perfect recipe. The platform indexed roughly 500 k recipes and stored their relationships in an inverted graph so that queries on pantry ingredients and preferences could return relevant suggestions. The architecture consisted of:
 
-- **Real‑time search** – Elasticsearch powered instantaneous querying over the large recipe corpus, enabling faceted filtering and full‑text search【835914650520473†L28-L33】.
+- **Real‑time search** – Elasticsearch powered instantaneous querying over the large recipe corpus, enabling faceted filtering and full‑text search.
 - **AI recommendations** – algorithms interpreted pantry contents and user dietary criteria to recommend healthy, interesting meals.
 - **FastAPI backend** – a Python‑based API served search and recommendation requests, exposing endpoints consumed by a React frontend.
 - **Responsive UI** – the React client provided a smooth user experience and dynamic filters.

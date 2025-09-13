@@ -6,7 +6,6 @@ date: "2025-09-13"
 readTime: 5
 category: "Mobile Development"
 tags: ["React Native", "Mobile", "Cross‑Platform"]
-image: "/images/react-native-app.png"
 featured: true
 slug: "react-native-app"
 ---
