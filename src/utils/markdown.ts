@@ -1,5 +1,3 @@
-import fs from 'fs';
-import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
@@ -40,84 +38,30 @@ async function markdownToHtml(markdown: string): Promise<string> {
   return result.toString();
 }
 
-// Define content directories
-const postsDirectory = path.join(process.cwd(), 'blog', 'posts');
-const projectsDirectory = path.join(process.cwd(), 'projects');
-
 // Blog post functions
 export async function getAllPosts(): Promise<BlogPost[]> {
-  const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames.map((fileName) => {
-    const slug = fileName.replace(/\.mdx?$/, '');
-    const fullPath = path.join(postsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const matterResult = matter(fileContents);
-
-    return {
-      slug,
-      ...(matterResult.data as Omit<BlogPost, 'slug' | 'content' | 'contentHtml'>),
-      content: matterResult.content, // Include content for search, but not for list view
-    };
-  });
-
-  // Sort posts by date in descending order
-  return allPostsData.sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1));
+  // Placeholder implementation - returns empty array
+  // TODO: Implement build-time content generation
+  return [];
 }
 
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
-  const fullPath = path.join(postsDirectory, `${slug}.md`);
-  if (!fs.existsSync(fullPath)) {
-    return null;
-  }
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
-  const matterResult = matter(fileContents);
-
-  const contentHtml = await markdownToHtml(matterResult.content);
-
-  return {
-    slug,
-    ...(matterResult.data as Omit<BlogPost, 'slug' | 'content' | 'contentHtml'>),
-    content: matterResult.content,
-    contentHtml,
-  };
+  // Placeholder implementation - returns null
+  // TODO: Implement build-time content generation
+  return null;
 }
 
 // Project functions
 export async function getAllProjects(): Promise<ProjectPost[]> {
-  const fileNames = fs.readdirSync(projectsDirectory);
-  const allProjectsData = fileNames.map((fileName) => {
-    const slug = fileName.replace(/\.mdx?$/, '');
-    const fullPath = path.join(projectsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const matterResult = matter(fileContents);
-
-    return {
-      slug,
-      ...(matterResult.data as Omit<ProjectPost, 'slug' | 'content' | 'contentHtml'>),
-      content: matterResult.content, // Include content for search, but not for list view
-    };
-  });
-
-  // Sort projects by date in descending order
-  return allProjectsData.sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1));
+  // Placeholder implementation - returns empty array
+  // TODO: Implement build-time content generation
+  return [];
 }
 
 export async function getProjectBySlug(slug: string): Promise<ProjectPost | null> {
-  const fullPath = path.join(projectsDirectory, `${slug}.md`);
-  if (!fs.existsSync(fullPath)) {
-    return null;
-  }
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
-  const matterResult = matter(fileContents);
-
-  const contentHtml = await markdownToHtml(matterResult.content);
-
-  return {
-    slug,
-    ...(matterResult.data as Omit<ProjectPost, 'slug' | 'content' | 'contentHtml'>),
-    content: matterResult.content,
-    contentHtml,
-  };
+  // Placeholder implementation - returns null
+  // TODO: Implement build-time content generation
+  return null;
 }
 
 // Search functions
