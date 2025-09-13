@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import CursorFollower from './components/CursorFollower';
 import ProjectDetailPage from './pages/ProjectDetailPage';
 import ArticleDetailPage from './pages/ArticleDetailPage';
+import ScrollToTop from './components/ScrollToTop';
 
 const MainPortfolioPage: React.FC = () => {
   const [activeSection, setActiveSection] = useState('Home');
@@ -56,7 +57,7 @@ function App() {
   return (
     <Router>
       <CursorFollower />
-      
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<MainPortfolioPage />} />
         <Route path="/projects/:slug" element={<ProjectDetailPage />} />
