@@ -6,8 +6,13 @@ import html from 'remark-html';
 
 // Utility function to convert markdown to HTML
 async function markdownToHtml(markdown) {
-  const result = await remark().use(html).process(markdown);
-  return result.toString();
+  try {
+    const result = await remark().use(html).process(markdown);
+    return result.toString(); // This should be HTML
+  } catch (error) {
+    console.error('Error converting markdown to HTML:', error);
+    return markdown; // Fallback to raw markdown if conversion fails
+  }
 }
 
 // Generate blog posts data
@@ -29,6 +34,7 @@ async function generateBlogPosts() {
       const matterResult = matter(fileContents);
 
       // Convert markdown to HTML
+      console.log(`Processing blog post: ${slug}`);
       const contentHtml = await markdownToHtml(matterResult.content);
 
       return {
@@ -71,6 +77,7 @@ async function generateProjects() {
       const matterResult = matter(fileContents);
 
       // Convert markdown to HTML
+      console.log(`Processing project: ${slug}`);
       const contentHtml = await markdownToHtml(matterResult.content);
 
       return {
@@ -78,7 +85,7 @@ async function generateProjects() {
         title: matterResult.data.title || 'Untitled Project',
         excerpt: matterResult.data.excerpt || 'No description available.',
         content: matterResult.content,
-        contentHtml,
+        contentHtml, // This should be HTML
         image: matterResult.data.image || 'https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=600',
         technologies: matterResult.data.technologies || [],
         githubUrl: matterResult.data.githubUrl || '#',
@@ -102,13 +109,18 @@ async function generateContent() {
     const blogPosts = await generateBlogPosts();
     const projects = await generateProjects();
     
+    console.log('--- Generated Projects Data (Snippet) ---');
+    
     console.log(`Generated ${blogPosts.length} blog posts`);
     console.log(`Generated ${projects.length} projects`);
     
     // Log the projects for debugging
     console.log('Projects found:');
     projects.forEach(project => {
-      console.log(`- ${project.title} (${project.slug})`);
+      console.log(`- ${project.title} (Slug: ${project.slug})`);
+      console.log(`  Image: ${project.image}`);
+      console.log(`  Technologies: ${project.technologies.join(', ')}`);
+      console.log(`  Content HTML snippet: ${project.contentHtml.substring(0, 100)}...`);
     });
     
     // Create the content data object
