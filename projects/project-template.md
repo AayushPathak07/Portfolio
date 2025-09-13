@@ -7,7 +7,7 @@ githubUrl: "https://github.com/yourusername/your-repo"
 liveUrl: "https://your-project-live-url.com"
 date: "2024"
 category: "Web Application"
-featured: true # Set to true to show this on the homepage, false to hide it
+featured: false # Set to true to show this on the homepage, false to hide it
 slug: "your-unique-project-slug"
 ---
 
@@ -23,9 +23,9 @@ Explain the purpose of the project and the problem it solves.
 
 ## Key Features
 
--   Feature A: Description of the feature.
--   Feature B: Description of the feature.
--   Feature C: Description of the feature.
+- Feature A: Description of the feature.
+- Feature B: Description of the feature.
+- Feature C: Description of the feature.
 
 ## Technical Details
 
