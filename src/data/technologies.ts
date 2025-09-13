@@ -8,12 +8,12 @@ import {
   FaGitAlt,
   FaDatabase,
   FaServer,
-  FaJava
+  FaJava,
+  FaCode
 } from 'react-icons/fa';
 import {
   SiPwa, // For PWA
   SiJavascript, // For JavaScript
-  SiWebcomponents, // For Web APIs (closest general icon)
   SiTypescript, 
   SiPostgresql, 
   SiMongodb, 
@@ -47,7 +47,7 @@ export const technologies: Technology[] = [
   { name: 'React', icon: FaReact, color: 'text-blue-500', category: 'frontend' },
   { name: 'PWA', icon: SiPwa, color: 'text-purple-500', category: 'frontend' },
   { name: 'JavaScript', icon: SiJavascript, color: 'text-yellow-500', category: 'frontend' },
-  { name: 'Web APIs', icon: SiWebcomponents, color: 'text-blue-400', category: 'frontend' },
+  { name: 'Web APIs', icon: FaCode, color: 'text-blue-400', category: 'frontend' },
   { name: 'TypeScript', icon: SiTypescript, color: 'text-blue-600', category: 'frontend' },
   { name: 'Next.js', icon: SiNextdotjs, color: 'text-gray-900', category: 'frontend' },
   { name: 'Tailwind CSS', icon: SiTailwindcss, color: 'text-cyan-500', category: 'frontend' },
