@@ -33,17 +33,17 @@ async function generateBlogPosts() {
 
       return {
         slug,
-        title: matterResult.data.title || '',
-        excerpt: matterResult.data.excerpt || '',
+        title: matterResult.data.title || 'Untitled Post',
+        excerpt: matterResult.data.excerpt || 'No description available.',
         content: matterResult.content,
         contentHtml,
         author: matterResult.data.author || 'Aayush Pathak',
         date: matterResult.data.date || new Date().toISOString().split('T')[0],
-        readTime: matterResult.data.readTime || 5,
-        category: matterResult.data.category || 'General',
+        readTime: parseInt(matterResult.data.readTime) || 5,
+        category: matterResult.data.category || 'Technology',
         tags: matterResult.data.tags || [],
         image: matterResult.data.image || 'https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=600',
-        featured: matterResult.data.featured || false,
+        featured: Boolean(matterResult.data.featured),
       };
     })
   );
@@ -75,17 +75,17 @@ async function generateProjects() {
 
       return {
         slug,
-        title: matterResult.data.title || '',
-        excerpt: matterResult.data.excerpt || '',
+        title: matterResult.data.title || 'Untitled Project',
+        excerpt: matterResult.data.excerpt || 'No description available.',
         content: matterResult.content,
         contentHtml,
-        image: matterResult.data.image || 'https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?auto=compress&cs=tinysrgb&w=600',
+        image: matterResult.data.image || 'https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=600',
         technologies: matterResult.data.technologies || [],
-        githubUrl: matterResult.data.githubUrl || '',
-        liveUrl: matterResult.data.liveUrl || '',
+        githubUrl: matterResult.data.githubUrl || '#',
+        liveUrl: matterResult.data.liveUrl || '#',
         date: matterResult.data.date || new Date().getFullYear().toString(),
-        category: matterResult.data.category || 'General',
-        featured: matterResult.data.featured || false,
+        category: matterResult.data.category || 'Development',
+        featured: Boolean(matterResult.data.featured),
       };
     })
   );
@@ -104,6 +104,12 @@ async function generateContent() {
     
     console.log(`Generated ${blogPosts.length} blog posts`);
     console.log(`Generated ${projects.length} projects`);
+    
+    // Log the projects for debugging
+    console.log('Projects found:');
+    projects.forEach(project => {
+      console.log(`- ${project.title} (${project.slug})`);
+    });
     
     // Create the content data object
     const contentData = {
