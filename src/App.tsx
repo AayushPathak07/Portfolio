@@ -5,7 +5,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
 import Blog from './components/Blog';
-import Contact from './components/Contact';
+// import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CursorFollower from './components/CursorFollower';
 import ProjectDetailPage from './pages/ProjectDetailPage';
@@ -49,7 +49,7 @@ const MainPortfolioPage: React.FC = () => {
      */
     const handleScroll = () => {
       // Define sections in order (must match the section IDs in components)
-      const sections = ['Home', 'Work', 'About', 'Blog', 'Contact'];
+      const sections = ['Home', 'Work', 'About', 'Blog'];
       
       // Get current scroll position with offset for fixed header
       const scrollPosition = window.scrollY + 100;
@@ -97,7 +97,7 @@ const MainPortfolioPage: React.FC = () => {
         <Blog />
         
         {/* Contact Section - Ways to get in touch */}
-        <Contact />
+        {/* <Contact /> */}
       </main>
       
       {/* Footer with additional links and information */}

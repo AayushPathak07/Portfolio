@@ -17,7 +17,6 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
     { id: 'work', label: 'Work' },
     { id: 'about', label: 'About' },
     { id: 'blog', label: 'Blog' },
-    { id: 'contact', label: 'Contact' },
   ];
 
   const handleNavClick = (sectionId: string) => {
