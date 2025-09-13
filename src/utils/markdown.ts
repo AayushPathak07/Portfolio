@@ -1,67 +1,26 @@
-import matter from 'gray-matter';
-import { remark } from 'remark';
-import html from 'remark-html';
+import { blogPosts, projects, type BlogPost, type ProjectPost } from '../data/content';
 
-export interface BlogPost {
-  slug: string;
-  title: string;
-  excerpt: string;
-  content: string;
-  contentHtml?: string;
-  author: string;
-  date: string;
-  readTime: number;
-  category: string;
-  tags: string[];
-  image: string;
-  featured: boolean;
-}
-
-export interface ProjectPost {
-  slug: string;
-  title: string;
-  excerpt: string;
-  content: string;
-  contentHtml?: string;
-  image: string;
-  technologies: string[];
-  githubUrl: string;
-  liveUrl: string;
-  date: string;
-  category: string;
-  featured: boolean;
-}
-
-// Utility function to convert markdown to HTML
-async function markdownToHtml(markdown: string): Promise<string> {
-  const result = await remark().use(html).process(markdown);
-  return result.toString();
-}
+// Re-export types for compatibility
+export type { BlogPost, ProjectPost };
 
 // Blog post functions
 export async function getAllPosts(): Promise<BlogPost[]> {
-  // Placeholder implementation - returns empty array
-  // TODO: Implement build-time content generation
-  return [];
+  return blogPosts;
 }
 
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
-  // Placeholder implementation - returns null
-  // TODO: Implement build-time content generation
-  return null;
+  const post = blogPosts.find(p => p.slug === slug);
+  return post || null;
 }
 
 // Project functions
 export async function getAllProjects(): Promise<ProjectPost[]> {
-  // Placeholder implementation - returns empty array
-  // TODO: Implement build-time content generation
-  return [];
+  return projects;
 }
 
 export async function getProjectBySlug(slug: string): Promise<ProjectPost | null> {
-  // Placeholder implementation - returns null
-  // TODO: Implement build-time content generation
-  return null;
+  const project = projects.find(p => p.slug === slug);
+  return project || null;
 }
 
 // Search functions
