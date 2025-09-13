@@ -2,24 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { HiArrowLeft, HiExternalLink, HiCalendar, HiTag } from 'react-icons/hi';
 import { FaGithub } from 'react-icons/fa';
-import { getProjectBySlug, ProjectPost } from '../utils/markdown';
+import { projects, ProjectPost } from '../data/content';
 import { getTechnologiesByNames } from '../data/technologies';
+import Header from '../components/Header';
 
-/**
- * ProjectDetailPage Component
- * 
- * Displays the full details of a single project, including:
- * - Complete project description from markdown content
- * - Technology stack with icons
- * - Links to GitHub repository and live demo
- * - Project metadata (date, category, etc.)
- * 
- * This component demonstrates how to:
- * - Use React Router's useParams hook to get URL parameters
- * - Fetch and display markdown content converted to HTML
- * - Handle loading states and error cases
- * - Create a professional project showcase layout
- */
 const ProjectDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const [project, setProject] = useState<ProjectPost | null>(null);
@@ -27,29 +13,21 @@ const ProjectDetailPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchProject = async () => {
-      if (!slug) {
-        setError('Project not found');
-        setLoading(false);
-        return;
-      }
+    setLoading(true);
+    if (!slug) {
+      setError('Project not found');
+      setLoading(false);
+      return;
+    }
 
-      try {
-        const projectData = await getProjectBySlug(slug);
-        if (!projectData) {
-          setError('Project not found');
-        } else {
-          setProject(projectData);
-        }
-      } catch (err) {
-        setError('Failed to load project');
-        console.error('Error fetching project:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
+    const projectData = projects.find(p => p.slug === slug);
 
-    fetchProject();
+    if (!projectData) {
+      setError('Project not found');
+    } else {
+      setProject(projectData);
+    }
+    setLoading(false);
   }, [slug]);
 
   if (loading) {
@@ -80,27 +58,22 @@ const ProjectDetailPage: React.FC = () => {
     );
   }
 
-  // Get technology data with icons and colors
   const technologies = getTechnologiesByNames(project.technologies);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <Link
-            to="/"
-            className="inline-flex items-center text-primary-600 hover:text-primary-700 transition-colors"
-          >
-            <HiArrowLeft className="mr-2" size={20} />
-            Back to Portfolio
-          </Link>
-        </div>
-      </header>
+    <div className="min-h-screen bg-gray-50 pt-16">
+      <Header activeSection="Work" />
 
-      {/* Main Content */}
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Project Header */}
+        <div className="mb-8">
+            <Link
+                to="/"
+                className="inline-flex items-center text-primary-600 hover:text-primary-700 transition-colors font-semibold"
+            >
+                <HiArrowLeft className="mr-2" size={20} />
+                Back to All Projects
+            </Link>
+        </div>
         <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
           <div className="mb-6">
             <img
@@ -118,7 +91,6 @@ const ProjectDetailPage: React.FC = () => {
             {project.excerpt}
           </p>
 
-          {/* Project Metadata */}
           <div className="flex flex-wrap items-center gap-6 mb-6 text-sm text-gray-500">
             <div className="flex items-center">
               <HiCalendar className="mr-2" size={16} />
@@ -130,7 +102,6 @@ const ProjectDetailPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Technology Stack */}
           <div className="mb-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Technology Stack</h3>
             <div className="flex flex-wrap gap-3">
@@ -146,7 +117,6 @@ const ProjectDetailPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Action Buttons */}
           <div className="flex flex-wrap gap-4">
             <a
               href={project.githubUrl}
@@ -169,15 +139,13 @@ const ProjectDetailPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Project Content */}
         <div className="bg-white rounded-2xl shadow-lg p-8">
-          <div 
+          <div
             className="prose prose-lg max-w-none prose-headings:font-serif prose-headings:text-gray-900 prose-p:text-gray-600 prose-p:leading-relaxed prose-code:bg-gray-100 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-pre:bg-gray-900 prose-pre:text-gray-100"
             dangerouslySetInnerHTML={{ __html: project.contentHtml || '' }}
           />
         </div>
 
-        {/* Related Projects CTA */}
         <div className="mt-12 text-center">
           <div className="bg-primary-500 text-white p-8 rounded-2xl">
             <h3 className="text-2xl font-bold mb-4 font-serif">Interested in More Projects?</h3>

@@ -8,10 +8,10 @@ import html from 'remark-html';
 async function markdownToHtml(markdown) {
   try {
     const result = await remark().use(html).process(markdown);
-    return result.toString(); // This should be HTML
+    return result.toString();
   } catch (error) {
     console.error('Error converting markdown to HTML:', error);
-    return markdown; // Fallback to raw markdown if conversion fails
+    return markdown;
   }
 }
 
@@ -20,7 +20,6 @@ async function generateBlogPosts() {
   const postsDirectory = path.join(process.cwd(), 'blog', 'posts');
   
   if (!fs.existsSync(postsDirectory)) {
-    console.log('Blog posts directory not found, creating empty array');
     return [];
   }
 
@@ -33,8 +32,6 @@ async function generateBlogPosts() {
       const fileContents = fs.readFileSync(fullPath, 'utf8');
       const matterResult = matter(fileContents);
 
-      // Convert markdown to HTML
-      console.log(`Processing blog post: ${slug}`);
       const contentHtml = await markdownToHtml(matterResult.content);
 
       return {
@@ -48,13 +45,12 @@ async function generateBlogPosts() {
         readTime: parseInt(matterResult.data.readTime) || 5,
         category: matterResult.data.category || 'Technology',
         tags: matterResult.data.tags || [],
-        image: matterResult.data.image || 'https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=600',
+        image: matterResult.data.image ? path.join('/src/assets/', matterResult.data.image) : 'https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=600',
         featured: Boolean(matterResult.data.featured),
       };
     })
   );
 
-  // Sort posts by date in descending order
   return allPostsData.sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1));
 }
 
@@ -63,7 +59,6 @@ async function generateProjects() {
   const projectsDirectory = path.join(process.cwd(), 'projects');
   
   if (!fs.existsSync(projectsDirectory)) {
-    console.log('Projects directory not found, creating empty array');
     return [];
   }
 
@@ -76,8 +71,6 @@ async function generateProjects() {
       const fileContents = fs.readFileSync(fullPath, 'utf8');
       const matterResult = matter(fileContents);
 
-      // Convert markdown to HTML
-      console.log(`Processing project: ${slug}`);
       const contentHtml = await markdownToHtml(matterResult.content);
 
       return {
@@ -85,8 +78,8 @@ async function generateProjects() {
         title: matterResult.data.title || 'Untitled Project',
         excerpt: matterResult.data.excerpt || 'No description available.',
         content: matterResult.content,
-        contentHtml, // This should be HTML
-        image: matterResult.data.image || 'https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=600',
+        contentHtml, 
+        image: matterResult.data.image ? path.join('/src/assets/', matterResult.data.image) : 'https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=600',
         technologies: matterResult.data.technologies || [],
         githubUrl: matterResult.data.githubUrl || '#',
         liveUrl: matterResult.data.liveUrl || '#',
@@ -97,46 +90,26 @@ async function generateProjects() {
     })
   );
 
-  // Sort projects by date in descending order
   return allProjectsData.sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1));
 }
 
 // Main function to generate all content
 async function generateContent() {
   try {
-    console.log('Generating content...');
-    
     const blogPosts = await generateBlogPosts();
     const projects = await generateProjects();
     
-    console.log('--- Generated Projects Data (Snippet) ---');
-    
-    console.log(`Generated ${blogPosts.length} blog posts`);
-    console.log(`Generated ${projects.length} projects`);
-    
-    // Log the projects for debugging
-    console.log('Projects found:');
-    projects.forEach(project => {
-      console.log(`- ${project.title} (Slug: ${project.slug})`);
-      console.log(`  Image: ${project.image}`);
-      console.log(`  Technologies: ${project.technologies.join(', ')}`);
-      console.log(`  Content HTML snippet: ${project.contentHtml.substring(0, 100)}...`);
-    });
-    
-    // Create the content data object
     const contentData = {
       blogPosts,
       projects,
       generatedAt: new Date().toISOString(),
     };
     
-    // Ensure src/data directory exists
     const dataDir = path.join(process.cwd(), 'src', 'data');
     if (!fs.existsSync(dataDir)) {
       fs.mkdirSync(dataDir, { recursive: true });
     }
     
-    // Write the content data to a TypeScript file
     const outputPath = path.join(dataDir, 'content.ts');
     const fileContent = `// This file is auto-generated. Do not edit manually.
 // Generated at: ${contentData.generatedAt}

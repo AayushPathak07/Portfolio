@@ -1,68 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { HiExternalLink, HiCalendar } from 'react-icons/hi';
 import { FaGithub, FaCode } from 'react-icons/fa';
-import { getAllProjects, ProjectPost } from '../utils/markdown';
+import { projects, ProjectPost } from '../data/content';
 import { getTechnologiesByNames } from '../data/technologies';
 
-/**
- * Projects Component
- * 
- * This component dynamically loads and showcases projects from markdown files.
- * It now features:
- * - Dynamic project loading from markdown files
- * - Clickable project cards that navigate to detail pages
- * - Technology icons loaded from centralized data
- * - Responsive grid layout with hover effects
- * 
- * For backend developers:
- * - Projects are loaded from markdown files using getAllProjects()
- * - Technology data comes from src/data/technologies.ts
- * - React Router Link components handle navigation
- * - Loading states provide good user experience
- */
 const Projects: React.FC = () => {
-  // State for managing projects data and loading state
-  const [projects, setProjects] = useState<ProjectPost[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  /**
-   * Load projects from markdown files on component mount
-   * This demonstrates how to fetch data asynchronously in React
-   */
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const projectsData = await getAllProjects();
-        setProjects(projectsData);
-      } catch (error) {
-        console.error('Error fetching projects:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProjects();
-  }, []);
-
-  // Show loading state while projects are being fetched
-  if (loading) {
-    return (
-      <section id="work" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-500 mx-auto mb-4"></div>
-            <p className="text-gray-600">Loading projects...</p>
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section id="work" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 font-serif">
             Featured <span className="text-primary-500">Projects</span>
@@ -72,10 +19,8 @@ const Projects: React.FC = () => {
           </p>
         </div>
 
-        {/* Projects Grid */}
         <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project) => {
-            // Get technology data with icons and colors
+          {projects.map((project: ProjectPost) => {
             const technologies = getTechnologiesByNames(project.technologies);
             
             return (
@@ -84,7 +29,6 @@ const Projects: React.FC = () => {
               to={`/projects/${project.slug}`}
               className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group"
             >
-              {/* Project Image */}
               <div className="aspect-video overflow-hidden">
                 <img
                   src={project.image}
@@ -93,9 +37,7 @@ const Projects: React.FC = () => {
                 />
               </div>
               
-              {/* Project Content */}
               <div className="p-6">
-                {/* Category and Date */}
                 <div className="flex items-center justify-between mb-3">
                   <span className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm font-medium">
                     {project.category}
@@ -106,15 +48,12 @@ const Projects: React.FC = () => {
                   </div>
                 </div>
                 
-                {/* Project Title */}
                 <h3 className="text-xl font-bold text-gray-900 mb-3 font-serif group-hover:text-primary-600 transition-colors">
                   {project.title}
                 </h3>
                 
-                {/* Project Description */}
                 <p className="text-gray-600 mb-4 font-sans leading-relaxed">{project.excerpt}</p>
                 
-                {/* Technology Tags */}
                 <div className="flex flex-wrap gap-2 mb-6">
                   {technologies.map((tech, techIndex) => (
                     <div
@@ -127,7 +66,6 @@ const Projects: React.FC = () => {
                   ))}
                 </div>
                 
-                {/* Project Links */}
                 <div className="flex items-center justify-between">
                   <div className="flex space-x-4">
                     <a
@@ -161,7 +99,6 @@ const Projects: React.FC = () => {
           })}
         </div>
 
-        {/* Call to Action */}
         <div className="text-center mt-16">
           <div className="bg-primary-500 text-white p-8 rounded-2xl shadow-xl">
             <div className="flex justify-center mb-4">

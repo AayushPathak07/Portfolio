@@ -1,4 +1,3 @@
-```markdown
 ---
 title: "justdev.tools"
 excerpt: "Privacy-first PWA with offline developer utilities. No accounts, no data leaks — everything runs locally on your device."
@@ -90,4 +89,3 @@ Since all tools run locally, no external monitoring exists. Performance validati
 - Enhanced regex and HTTP testing tools
 - More quality-of-life improvements while keeping app lightweight
 - User-driven utility expansion
-```

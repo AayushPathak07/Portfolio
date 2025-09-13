@@ -1,58 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { HiCalendar, HiClock, HiArrowRight, HiTag, HiSearch, HiBookOpen } from 'react-icons/hi';
-import { getAllPosts, BlogPost } from '../utils/markdown';
+import { HiCalendar, HiClock, HiArrowRight, HiTag, HiSearch } from 'react-icons/hi';
+import { blogPosts, BlogPost } from '../data/content';
 
-/**
- * Blog Component
- * 
- * This component now dynamically loads blog posts from markdown files and provides:
- * - Dynamic content loading from markdown files
- * - Clickable article cards that navigate to detail pages
- * - Search and filtering functionality
- * - Featured and regular posts sections
- * - Responsive grid layout
- * 
- * For backend developers:
- * - Posts are loaded from markdown files using getAllPosts()
- * - React Router Link components handle navigation to article detail pages
- * - Search and filtering work on the loaded data
- * - Loading states provide good user experience
- */
 const Blog: React.FC = () => {
-  // State management for search and filtering
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
 
+  const posts = blogPosts;
 
-  // Available categories for filtering
-  const categories = ['all', 'Backend', 'Database', 'DevOps'];
+  const categories = ['all', ...Array.from(new Set(posts.map(p => p.category)))];
 
-  /**
-   * Load blog posts from markdown files on component mount
-   * This demonstrates asynchronous data loading in React
-   */
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const postsData = await getAllPosts();
-        setPosts(postsData);
-      } catch (error) {
-        console.error('Error fetching posts:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPosts();
-  }, []);
-
-  /**
-   * Filter posts based on search term and selected category
-   * This function demonstrates how to implement client-side filtering
-   */
   const filteredPosts = posts.filter(post => {
     const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -61,15 +19,9 @@ const Blog: React.FC = () => {
     return matchesSearch && matchesCategory;
   });
 
-  // Separate featured and regular posts for different display layouts
   const featuredPosts = filteredPosts.filter(post => post.featured);
   const otherPosts = filteredPosts.filter(post => !post.featured);
 
-  /**
-   * Format date string for display
-   * @param dateString - ISO date string
-   * @returns Formatted date string
-   */
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -77,20 +29,6 @@ const Blog: React.FC = () => {
       day: 'numeric'
     });
   };
-
-  // Show loading state while posts are being fetched
-  if (loading) {
-    return (
-      <section id="blog" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-500 mx-auto mb-4"></div>
-            <p className="text-gray-600">Loading articles...</p>
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section id="blog" className="py-20 bg-gray-50">
@@ -154,7 +92,6 @@ const Blog: React.FC = () => {
                       alt={post.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       onError={(e) => {
-                        // Fallback for missing images
                         e.currentTarget.src = 'https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=600';
                       }}
                     />
