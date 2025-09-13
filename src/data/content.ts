@@ -1,5 +1,5 @@
 // This file is auto-generated. Do not edit manually.
-// Generated at: 2025-09-13T16:59:07.637Z
+// Generated at: 2025-09-13T17:05:15.471Z
 
 export interface BlogPost {
   slug: string;
@@ -129,4 +129,4 @@ export const projects: ProjectPost[] = [
   }
 ];
 
-export const generatedAt = "2025-09-13T16:59:07.637Z";
+export const generatedAt = "2025-09-13T17:05:15.471Z";
