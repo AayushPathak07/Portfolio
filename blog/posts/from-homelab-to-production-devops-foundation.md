@@ -5,7 +5,15 @@ date: "2025-09-04"
 readTime: 6
 author: "Aayush Pathak"
 category: "Case Study"
-tags: ["DevOps", "Infrastructure", "Automation", "Digital Transformation", "On-Prem"]
+tags:
+  [
+    "DevOps",
+    "Infrastructure",
+    "Automation",
+    "Digital Transformation",
+    "On-Prem",
+  ]
+image: "images/Kidcentral_DevOps/blog-cover.png"
 featured: true
 slug: "from-homelab-to-production-devops-foundation"
 ---
@@ -34,9 +42,9 @@ Finally, I replaced costly outsourced integrations with an internal system that 
 
 The results: cost savings, faster deployments, live dashboards for managers, and a cultural shift from “buy first” to “try to build first.”
 
-
-
 ---
+
+![An example image description](public/images/Kidcentral_DevOps/kidcentral_visual1.png)
 
 ## Step 1: Proof of Concept
 
@@ -48,6 +56,8 @@ It was enough to justify investing in a modest server for on-prem experiments. T
 
 ---
 
+![An example image description](public/images/Kidcentral_DevOps/kidcentral_visual2.png)
+
 ## Step 2: Standing Up Infrastructure
 
 The new server became the foundation. I installed a hypervisor to run multiple isolated services side by side. Virtual machines let me separate workloads while still running on one piece of hardware.
@@ -58,6 +68,8 @@ It wasn’t huge. But it was stable, expandable, and ours.
 
 ---
 
+![An example image description](public/images/Kidcentral_DevOps/kidcentral_visual3.png)
+
 ## Step 3: Deployments and Automation
 
 At first, applications were simple services running directly on the server. That worked, but it wasn’t flexible. So I began containerizing apps, making them portable and easier to manage.
@@ -65,8 +77,6 @@ At first, applications were simple services running directly on the server. That
 As the environment grew, I added a lightweight management layer that made it possible to spin up new services or redeploy existing ones in minutes. No more waiting on external vendors for every change.
 
 Automation was another layer. Scheduled jobs handled recurring tasks, while event-driven triggers responded to real-world signals like incoming orders or updated data. The system went from manual to largely self-sufficient.
-
-
 
 ---
 
@@ -101,8 +111,6 @@ Support times went from six hours to minutes. My record production fix took thir
 Managers had real-time dashboards instead of emailed SQL reports.
 
 And the culture shifted. The default wasn’t “what do we buy,” it was “can we build this ourselves?”
-
-
 
 ---
 
