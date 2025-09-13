@@ -1,14 +1,14 @@
 ---
 title: "Introducing justdev.tools"
-date: 2025-09-04T09:30:00+00:00
+excerpt: "A privacy-first, installable PWA with fast, local developer utilities. Works offline. No accounts. No data leaves your device."
 author: "Aayush Pathak"
-description: "A privacy-first, installable PWA with fast, local developer utilities. Works offline. No accounts. No data leaves your device."
+date: "2025-09-04"
+readTime: 4
+category: "Product"
 tags: ["PWA", "Developer Tools", "WebDev", "Privacy", "Offline", "Productivity"]
-categories: ["Product", "Engineering"]
-draft: false
-cover:
-  image: "/images/justdev/justdev.png"
-  alt: "justdev.tools — Privacy-first developer utilities"
+image: "images/justdev/justdev.png"
+featured: true
+slug: "introducing-justdev-tools"
 ---
 
 # justdev.tools

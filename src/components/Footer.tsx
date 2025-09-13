@@ -2,41 +2,16 @@ import React from 'react';
 import { HiHeart, HiArrowUp } from 'react-icons/hi';
 import { FaCode, FaCoffee } from 'react-icons/fa';
 
-/**
- * Footer Component
- * 
- * This component provides the website footer with:
- * - Brand information and description
- * - Quick navigation links
- * - Technology stack information
- * - Copyright and hosting information
- * - Back to top functionality
- * 
- * For backend developers:
- * - Simple, clean layout that's easy to modify
- * - Responsive design that works on all devices
- * - Smooth scroll functionality for navigation
- * - Easy to update contact information and links
- */
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
-  /**
-   * Quick Links Configuration
-   * Easy to modify navigation links
-   */
   const quickLinks = [
     { label: 'Home', href: '#home' },
     { label: 'Work', href: '#work' },
     { label: 'About', href: '#about' },
     { label: 'Blog', href: '#blog' },
-    { label: 'Contact', href: '#contact' }
   ];
 
-  /**
-   * Smooth scroll to section
-   * @param href - The section anchor (e.g., '#home')
-   */
   const scrollToSection = (href: string) => {
     const sectionId = href.replace('#', '');
     const element = document.getElementById(sectionId);
@@ -50,9 +25,6 @@ const Footer: React.FC = () => {
     }
   };
 
-  /**
-   * Scroll to top of page
-   */
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -61,7 +33,6 @@ const Footer: React.FC = () => {
     <footer className="bg-white border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
-          {/* Brand Section */}
           <div className="space-y-4">
             <h3 className="text-xl font-bold text-gray-900 font-serif">
               Aayush Pathak
@@ -80,7 +51,6 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h4 className="text-lg font-semibold text-gray-900 mb-4 font-serif">Quick Links</h4>
             <nav className="space-y-2">
@@ -96,7 +66,6 @@ const Footer: React.FC = () => {
             </nav>
           </div>
 
-          {/* Tech Stack */}
           <div>
             <h4 className="text-lg font-semibold text-gray-900 mb-4 font-serif">Built With</h4>
             <div className="flex flex-wrap gap-2">
@@ -125,7 +94,6 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="pt-8 border-t border-gray-200">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-500 text-sm font-sans">

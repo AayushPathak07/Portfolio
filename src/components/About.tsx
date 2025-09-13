@@ -3,32 +3,12 @@ import { FaCoffee, FaAward, FaCode, FaServer, FaDatabase } from 'react-icons/fa'
 import { HiUsers, HiCalendar } from 'react-icons/hi';
 import { getTechnologiesByCategory } from '../data/technologies';
 
-/**
- * About Component
- * 
- * This component now dynamically loads technology data and showcases:
- * - Personal background and professional story
- * - Technology skills organized by category
- * - Professional statistics and achievements
- * - Call-to-action for collaboration
- * 
- * For backend developers:
- * - Technology data comes from src/data/technologies.ts
- * - Categories are dynamically filtered and displayed
- * - Icons and colors are centrally managed
- * - Easy to add new technologies by updating the data file
- */
 const About: React.FC = () => {
-  // Get technology data from centralized source
   const frontendTechs = getTechnologiesByCategory('frontend');
   const backendTechs = getTechnologiesByCategory('backend');
   const databaseTechs = getTechnologiesByCategory('database');
   const devopsTechs = getTechnologiesByCategory('devops');
 
-  /**
-   * Professional Statistics
-   * Key metrics that demonstrate experience and impact
-   */
   const stats = [
     { icon: FaCode, label: 'Projects Completed', value: '50+', color: 'text-primary-500' },
     { icon: FaCoffee, label: 'Cups of Coffee', value: '1000+', color: 'text-yellow-500' },
@@ -36,11 +16,6 @@ const About: React.FC = () => {
     { icon: HiCalendar, label: 'Years Experience', value: '5+', color: 'text-success-500' }
   ];
 
-  /**
-   * Technology Section Component
-   * Reusable component for displaying technology categories
-   * Now uses the centralized technology data with proper icons and colors
-   */
   const TechSection: React.FC<{
     title: string;
     icon: React.ComponentType<any>;
@@ -72,7 +47,6 @@ const About: React.FC = () => {
   return (
     <section id="about" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 font-serif">
             About <span className="text-primary-500">Me</span>
@@ -83,7 +57,6 @@ const About: React.FC = () => {
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8 items-start mb-16">
-          {/* Personal Story - Takes up 2 columns on large screens */}
           <div className="lg:col-span-2 space-y-6">
             <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 p-8">
               <h3 className="text-2xl font-bold text-gray-900 mb-4 font-serif">My Journey</h3>
@@ -106,7 +79,6 @@ const About: React.FC = () => {
             </div>
           </div>
 
-          {/* Stats - Takes up 1 column on large screens */}
           <div className="grid grid-cols-2 lg:grid-cols-1 gap-4">
             {stats.map((stat, index) => (
               <div
@@ -121,9 +93,7 @@ const About: React.FC = () => {
           </div>
         </div>
 
-        {/* Technology Sections */}
         <div className="grid md:grid-cols-2 gap-12 mb-12">
-          {/* Backend Technologies */}
           <TechSection
             title="Backend Technologies"
             icon={FaServer}
@@ -131,7 +101,6 @@ const About: React.FC = () => {
             technologies={backendTechs}
           />
 
-          {/* Database Technologies */}
           <TechSection
             title="Database Systems"
             icon={FaDatabase}
@@ -139,7 +108,6 @@ const About: React.FC = () => {
             technologies={databaseTechs}
           />
 
-          {/* DevOps Technologies */}
           <TechSection
             title="DevOps & Infrastructure"
             icon={FaServer}
@@ -147,43 +115,12 @@ const About: React.FC = () => {
             technologies={devopsTechs}
           />
 
-          {/* Frontend Technologies */}
           <TechSection
             title="Frontend Technologies"
             icon={FaCode}
             iconColor="text-primary-500"
             technologies={frontendTechs}
           />
-        </div>
-
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <div className="bg-accent-500 text-white p-8 rounded-2xl shadow-xl">
-            <div className="flex justify-center mb-4">
-              <HiUsers className="text-white" size={48} />
-            </div>
-            <h3 className="text-2xl font-bold mb-4 font-serif">Let's Build Something Scalable</h3>
-            <p className="text-accent-100 mb-6 max-w-2xl mx-auto font-sans">
-              Ready to tackle complex technical challenges? I'm always excited to work on 
-              systems that push the boundaries of performance and scalability.
-            </p>
-            <button
-              onClick={() => {
-                const contactSection = document.getElementById('contact');
-                if (contactSection) {
-                  const headerOffset = 80;
-                  const elementPosition = contactSection.offsetTop - headerOffset;
-                  window.scrollTo({
-                    top: elementPosition,
-                    behavior: 'smooth'
-                  });
-                }
-              }}
-              className="bg-white text-accent-600 hover:bg-gray-50 font-semibold py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105"
-            >
-              Get In Touch
-            </button>
-          </div>
         </div>
       </div>
     </section>

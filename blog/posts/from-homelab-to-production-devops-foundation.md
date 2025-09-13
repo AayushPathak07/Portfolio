@@ -1,23 +1,14 @@
 ---
 title: "From Homelab to Production: How I Built an On-Prem DevOps & IT Foundation"
-date: 2025-09-04T09:00:00+00:00
+excerpt: "A deep dive into how I transformed Kidcentral Supply’s IT and DevOps environment using lessons from my homelab."
+date: "2025-09-04"
+readTime: 6
 author: "Aayush Pathak"
-description: "A deep dive into how I transformed Kidcentral Supply’s IT and DevOps environment using lessons from my homelab. Includes proof of concept, infrastructure design, deployments, monitoring, apps, integrations, results, lessons learned, and what’s next."
-tags:
-  [
-    "DevOps",
-    "Infrastructure",
-    "Automation",
-    "Digital Transformation",
-    "On-Prem",
-    "HomelabToProd",
-    "BuildNotBuy",
-  ]
-categories: ["Case Study", "DevOps", "Engineering"]
-draft: false
-cover:
-  image: "/images/Kidcentral_DevOps/blog-cover.png"
-  alt: "From Homelab to Production blog cover"
+category: "Case Study"
+tags: ["DevOps", "Infrastructure", "Automation", "Digital Transformation", "On-Prem"]
+image: "images/Kidcentral_DevOps/blog-cover.png"
+featured: true
+slug: "from-homelab-to-production-devops-foundation"
 ---
 
 # From Homelab to Production: How I Built an On-Prem DevOps & IT Foundation
