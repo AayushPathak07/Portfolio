@@ -1,24 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import About from './components/About';
-import Accomplishments from './components/Accomplishments';
-import Projects from './components/Projects';
-import Blog from './components/Blog';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import CursorFollower from './components/CursorFollower';
-import ProjectDetailPage from './pages/ProjectDetailPage';
-import ArticleDetailPage from './pages/ArticleDetailPage';
-import ScrollToTop from './components/ScrollToTop';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Accomplishments from "./components/Accomplishments";
+import Projects from "./components/Projects";
+import Blog from "./components/Blog";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import CursorFollower from "./components/CursorFollower";
+import ProjectDetailPage from "./pages/ProjectDetailPage";
+import ArticleDetailPage from "./pages/ArticleDetailPage";
+import ScrollToTop from "./components/ScrollToTop";
 
 const MainPortfolioPage: React.FC = () => {
-  const [activeSection, setActiveSection] = useState('Home');
+  const [activeSection, setActiveSection] = useState("Home");
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['Home', 'Work', 'About', 'Accomplishments', 'Blog', 'Contact'];
+      const sections = [
+        "Home",
+        "My_Work",
+        "About",
+        "Accomplishments",
+        "Blog",
+        "Contact",
+      ];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -26,8 +33,11 @@ const MainPortfolioPage: React.FC = () => {
         if (element) {
           const offsetTop = element.offsetTop;
           const offsetHeight = element.offsetHeight;
-          
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
             setActiveSection(section);
             break;
           }
@@ -35,23 +45,22 @@ const MainPortfolioPage: React.FC = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <div className="min-h-screen bg-gray-50">
       <Header activeSection={activeSection} />
-      
+
       <main>
         <Hero />
         <Projects />
         <About />
         <Accomplishments />
         <Blog />
-        
       </main>
-      
+
       <Footer />
     </div>
   );
