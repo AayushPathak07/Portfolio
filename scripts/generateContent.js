@@ -90,7 +90,18 @@ async function generateProjects() {
     })
   );
 
-  return allProjectsData.sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1));
+  // Sort projects: those with images first, then by date (newest first)
+  return allProjectsData.sort((a, b) => {
+    const aHasImage = a.image && a.image.trim() !== '';
+    const bHasImage = b.image && b.image.trim() !== '';
+    
+    // If one has image and other doesn't, prioritize the one with image
+    if (aHasImage && !bHasImage) return -1;
+    if (!aHasImage && bHasImage) return 1;
+    
+    // If both have images or both don't have images, sort by date (newest first)
+    return new Date(a.date) < new Date(b.date) ? 1 : -1;
+  });
 }
 
 // Main function to generate all content

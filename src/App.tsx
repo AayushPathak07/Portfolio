@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
+import Accomplishments from './components/Accomplishments';
 import Projects from './components/Projects';
 import Blog from './components/Blog';
 import Footer from './components/Footer';
@@ -16,7 +17,7 @@ const MainPortfolioPage: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['Home', 'Work', 'About', 'Blog'];
+      const sections = ['Home', 'Work', 'About', 'Accomplishments', 'Blog'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -45,6 +46,7 @@ const MainPortfolioPage: React.FC = () => {
         <Hero />
         <Projects />
         <About />
+        <Accomplishments />
         <Blog />
       </main>
       
