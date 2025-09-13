@@ -10,6 +10,7 @@ technologies: ["PWA", "React", "Vite", "JavaScript"]
 image: "/images/justdevtools.png"
 featured: true
 slug: "justdev-tools"
+liveUrl: "https://justdev.tools"
 ---
 
 # JustDev.tools

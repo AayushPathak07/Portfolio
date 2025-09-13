@@ -118,24 +118,28 @@ const ProjectDetailPage: React.FC = () => {
           </div>
 
           <div className="flex flex-wrap gap-4">
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
-            >
-              <FaGithub className="mr-2" size={20} />
-              View Source Code
-            </a>
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center bg-primary-500 hover:bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
-            >
-              <HiExternalLink className="mr-2" size={20} />
-              Live Demo
-            </a>
+            {project.githubUrl && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+              >
+                <FaGithub className="mr-2" size={20} />
+                View Source Code
+              </a>
+            )}
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center bg-primary-500 hover:bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+              >
+                <HiExternalLink className="mr-2" size={20} />
+                Live Demo
+              </a>
+            )}
           </div>
         </div>
 
