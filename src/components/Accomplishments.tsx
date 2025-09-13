@@ -1,80 +1,71 @@
-import React from 'react';
-import { Award, Trophy, Star, Calendar } from 'lucide-react';
-import { AlignCenterVertical as Certificate } from 'lucide-react';
+import React from "react";
+import { FaAward, FaTrophy, FaStar, FaCertificate } from "react-icons/fa";
 
 const Accomplishments: React.FC = () => {
   const accomplishments = [
     {
-      type: 'award',
-      title: 'Best Innovation Award 2024',
-      organization: 'TechCrunch Disrupt',
-      date: '2024',
-      description: 'Awarded for developing an AI-powered sustainability platform that reduces carbon footprint by 30%',
-      icon: Trophy,
+      type: "award",
+      title: "7-Time National Rank 1 - Cyber Olympiad",
+      organization: "Science Olympiad Foundation (SOF)",
+      date: "2009-2015",
+      description:
+        "Achieved National Rank 1 for seven consecutive years in the National Cyber Olympiad conducted by SOF.",
+      icon: FaTrophy,
     },
     {
-      type: 'certification',
-      title: 'AWS Solutions Architect Professional',
-      organization: 'Amazon Web Services',
-      date: '2024',
-      description: 'Advanced cloud architecture certification demonstrating expertise in designing distributed systems',
-      icon: Certificate,
+      type: "achievement",
+      title: "Top 30 Innovators in India",
+      organization: "Government of India",
+      date: "2018-2019",
+      description:
+        "Recognized among the Top 30 young innovators in India for impactful science and technology contributions.",
+      icon: FaStar,
     },
     {
-      type: 'achievement',
-      title: 'Open Source Contributor of the Year',
-      organization: 'GitHub',
-      date: '2023',
-      description: 'Recognized for significant contributions to open-source projects with over 500 commits and 50+ PRs',
-      icon: Star,
+      type: "award",
+      title: "First Prize - Science Exhibitions",
+      organization: "CBSE",
+      date: "2015-2018",
+      description:
+        "Won multiple first-place awards in science exhibitions from school to national-level CBSE competitions.",
+      icon: FaAward,
     },
     {
-      type: 'award',
-      title: 'Hackathon Winner - FinTech Challenge',
-      organization: 'JP Morgan Chase',
-      date: '2023',
-      description: 'First place in 48-hour hackathon for developing a blockchain-based payment solution',
-      icon: Award,
+      type: "experience",
+      title: "IBM Student Intern",
+      organization: "IBM",
+      date: "2018",
+      description:
+        "Selected as a student intern at IBM, gaining early industry experience in applied technology and innovation.",
+      icon: FaCertificate,
     },
     {
-      type: 'certification',
-      title: 'Google Cloud Professional Developer',
-      organization: 'Google Cloud',
-      date: '2023',
-      description: 'Certified in developing scalable applications on Google Cloud Platform',
-      icon: Certificate,
+      type: "achievement",
+      title: "Television Appearances",
+      organization: "National Science Competitions, India",
+      date: "2016-2019",
+      description:
+        "Featured multiple times on national television for participation and victories in Indian science competitions.",
+      icon: FaStar,
     },
     {
-      type: 'achievement',
-      title: 'Tech Speaker at 10+ Conferences',
-      organization: 'Various Tech Events',
-      date: '2022-2024',
-      description: 'Delivered keynote speeches on modern web development and AI integration at major tech conferences',
-      icon: Star,
+      type: "award",
+      title: "Winner - FAST Capstone Project Competition",
+      organization: "Sheridan College",
+      date: "2024",
+      description:
+        "Won first place by building an AI + OpenCV drone capable of tracking vehicles and individuals to assist law enforcement.",
+      icon: FaTrophy,
     },
     {
-      type: 'award',
-      title: 'Innovation Excellence Award',
-      organization: 'IEEE Computer Society',
-      date: '2022',
-      description: 'Recognized for outstanding contribution to computer science research and development',
-      icon: Trophy,
+      type: "certification",
+      title: "AWS Certified Cloud Practitioner",
+      organization: "Amazon Web Services",
+      date: "2025",
+      description:
+        "Foundational certification in AWS cloud concepts, services, and global infrastructure.",
+      icon: FaCertificate,
     },
-    {
-      type: 'certification',
-      title: 'Certified Kubernetes Administrator',
-      organization: 'Cloud Native Computing Foundation',
-      date: '2022',
-      description: 'Expert-level certification in Kubernetes cluster administration and orchestration',
-      icon: Certificate,
-    }
-  ];
-
-  const stats = [
-    { label: 'Awards Won', value: '12+', icon: Trophy, color: 'text-yellow-400' },
-    { label: 'Certifications', value: '8', icon: Certificate, color: 'text-blue-400' },
-    { label: 'Conference Talks', value: '15+', icon: Star, color: 'text-purple-400' },
-    { label: 'Years Active', value: '5+', icon: Calendar, color: 'text-green-400' }
   ];
 
   return (
@@ -85,7 +76,8 @@ const Accomplishments: React.FC = () => {
             My <span className="text-primary-500">Accomplishments</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto font-sans">
-            Recognition and achievements that mark my journey in technology and innovation
+            Recognition and achievements that mark my journey in technology and
+            innovation
           </p>
         </div>
 
@@ -105,38 +97,19 @@ const Accomplishments: React.FC = () => {
                       {accomplishment.date}
                     </span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">{accomplishment.title}</h3>
-                  <p className="text-gray-500 font-medium mb-3">{accomplishment.organization}</p>
-                  <p className="text-gray-600 leading-relaxed">{accomplishment.description}</p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
+                    {accomplishment.title}
+                  </h3>
+                  <p className="text-gray-500 font-medium mb-3">
+                    {accomplishment.organization}
+                  </p>
+                  <p className="text-gray-600 leading-relaxed">
+                    {accomplishment.description}
+                  </p>
                 </div>
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="text-center mt-16">
-          <div className="bg-primary-500 text-white p-8 rounded-2xl shadow-xl">
-            <h3 className="text-2xl font-bold mb-4 font-serif">Let's Build Something Amazing Together</h3>
-            <p className="text-primary-100 mb-6 max-w-2xl mx-auto font-sans">
-              Ready to collaborate on innovative projects? I'm always excited to work on challenging problems and create impactful solutions.
-            </p>
-            <button
-              onClick={() => {
-                const contactSection = document.getElementById('contact');
-                if (contactSection) {
-                  const headerOffset = 80;
-                  const elementPosition = contactSection.offsetTop - headerOffset;
-                  window.scrollTo({
-                    top: elementPosition,
-                    behavior: 'smooth'
-                  });
-                }
-              }}
-              className="bg-white text-primary-600 hover:bg-gray-50 font-semibold py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105"
-            >
-              Get In Touch
-            </button>
-          </div>
         </div>
       </div>
     </section>

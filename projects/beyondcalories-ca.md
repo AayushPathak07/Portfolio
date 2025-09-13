@@ -10,6 +10,7 @@ technologies: ["AI", "Elasticsearch", "FastAPI", "React"]
 image: "/images/beyond-calories.png"
 featured: true
 slug: "beyondcalories-ca"
+liveUrl: "https://beyondcalories.ca"
 ---
 
 # BeyondCalories.ca
