@@ -1,5 +1,6 @@
 import React from 'react';
-import { Award, Trophy, AlignCenterVertical as Certificate, Star, Calendar } from 'lucide-react';
+import { Award, Trophy, Star, Calendar } from 'lucide-react';
+import { AlignCenterVertical as Certificate } from 'lucide-react';
 
 const Accomplishments: React.FC = () => {
   const accomplishments = [
@@ -10,9 +11,6 @@ const Accomplishments: React.FC = () => {
       date: '2024',
       description: 'Awarded for developing an AI-powered sustainability platform that reduces carbon footprint by 30%',
       icon: Trophy,
-      color: 'text-yellow-400',
-      bgColor: 'bg-yellow-600/20',
-      borderColor: 'border-yellow-500/30'
     },
     {
       type: 'certification',
@@ -21,9 +19,6 @@ const Accomplishments: React.FC = () => {
       date: '2024',
       description: 'Advanced cloud architecture certification demonstrating expertise in designing distributed systems',
       icon: Certificate,
-      color: 'text-orange-400',
-      bgColor: 'bg-orange-600/20',
-      borderColor: 'border-orange-500/30'
     },
     {
       type: 'achievement',
@@ -32,9 +27,6 @@ const Accomplishments: React.FC = () => {
       date: '2023',
       description: 'Recognized for significant contributions to open-source projects with over 500 commits and 50+ PRs',
       icon: Star,
-      color: 'text-purple-400',
-      bgColor: 'bg-purple-600/20',
-      borderColor: 'border-purple-500/30'
     },
     {
       type: 'award',
@@ -43,9 +35,6 @@ const Accomplishments: React.FC = () => {
       date: '2023',
       description: 'First place in 48-hour hackathon for developing a blockchain-based payment solution',
       icon: Award,
-      color: 'text-green-400',
-      bgColor: 'bg-green-600/20',
-      borderColor: 'border-green-500/30'
     },
     {
       type: 'certification',
@@ -54,9 +43,6 @@ const Accomplishments: React.FC = () => {
       date: '2023',
       description: 'Certified in developing scalable applications on Google Cloud Platform',
       icon: Certificate,
-      color: 'text-blue-400',
-      bgColor: 'bg-blue-600/20',
-      borderColor: 'border-blue-500/30'
     },
     {
       type: 'achievement',
@@ -65,9 +51,6 @@ const Accomplishments: React.FC = () => {
       date: '2022-2024',
       description: 'Delivered keynote speeches on modern web development and AI integration at major tech conferences',
       icon: Star,
-      color: 'text-pink-400',
-      bgColor: 'bg-pink-600/20',
-      borderColor: 'border-pink-500/30'
     },
     {
       type: 'award',
@@ -76,9 +59,6 @@ const Accomplishments: React.FC = () => {
       date: '2022',
       description: 'Recognized for outstanding contribution to computer science research and development',
       icon: Trophy,
-      color: 'text-cyan-400',
-      bgColor: 'bg-cyan-600/20',
-      borderColor: 'border-cyan-500/30'
     },
     {
       type: 'certification',
@@ -87,9 +67,6 @@ const Accomplishments: React.FC = () => {
       date: '2022',
       description: 'Expert-level certification in Kubernetes cluster administration and orchestration',
       icon: Certificate,
-      color: 'text-indigo-400',
-      bgColor: 'bg-indigo-600/20',
-      borderColor: 'border-indigo-500/30'
     }
   ];
 
@@ -101,94 +78,61 @@ const Accomplishments: React.FC = () => {
   ];
 
   return (
-    <section id="accomplishments" className="py-20 bg-slate-800/30">
+    <section id="accomplishments" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            My <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Accomplishments</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 font-serif">
+            My <span className="text-primary-500">Accomplishments</span>
           </h2>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto font-sans">
             Recognition and achievements that mark my journey in technology and innovation
           </p>
         </div>
 
-        {/* Stats Overview */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-          {stats.map((stat, index) => (
+        <div className="grid md:grid-cols-2 gap-8 md:items-start">
+          {accomplishments.map((accomplishment, index) => (
             <div
               key={index}
-              className="bg-gradient-to-br from-slate-800 to-slate-900 p-6 rounded-2xl border border-slate-700/50 text-center hover:border-blue-500/30 transition-all duration-300"
+              className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group p-6"
             >
-              <stat.icon className={`mx-auto mb-3 ${stat.color}`} size={32} />
-              <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
-              <div className="text-slate-300 text-sm">{stat.label}</div>
+              <div className="flex items-start space-x-4">
+                <div className="p-3 rounded-lg bg-primary-100">
+                  <accomplishment.icon className="text-primary-500" size={24} />
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-medium text-primary-700">
+                      {accomplishment.date}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">{accomplishment.title}</h3>
+                  <p className="text-gray-500 font-medium mb-3">{accomplishment.organization}</p>
+                  <p className="text-gray-600 leading-relaxed">{accomplishment.description}</p>
+                </div>
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Accomplishments Timeline */}
-        <div className="relative">
-          {/* Timeline Line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 transform md:-translate-x-1/2"></div>
-
-          <div className="space-y-8">
-            {accomplishments.map((accomplishment, index) => (
-              <div
-                key={index}
-                className={`relative flex flex-col md:flex-row ${
-                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                } items-center`}
-              >
-                {/* Timeline Node */}
-                <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transform md:-translate-x-1/2 z-10 border-4 border-slate-900"></div>
-
-                {/* Content Card */}
-                <div
-                  className={`w-full md:w-5/12 ml-12 md:ml-0 ${
-                    index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'
-                  }`}
-                >
-                  <div className={`bg-gradient-to-br from-slate-800 to-slate-900 p-6 rounded-2xl border ${accomplishment.borderColor} hover:scale-105 transition-all duration-300`}>
-                    <div className="flex items-start space-x-4">
-                      <div className={`p-3 rounded-lg ${accomplishment.bgColor} ${accomplishment.borderColor} border`}>
-                        <accomplishment.icon className={accomplishment.color} size={24} />
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center justify-between mb-2">
-                          <span className={`text-sm font-medium px-2 py-1 rounded-lg ${accomplishment.bgColor} ${accomplishment.color}`}>
-                            {accomplishment.date}
-                          </span>
-                        </div>
-                        <h3 className="text-xl font-bold text-white mb-2">{accomplishment.title}</h3>
-                        <p className="text-blue-400 font-medium mb-3">{accomplishment.organization}</p>
-                        <p className="text-slate-300 leading-relaxed">{accomplishment.description}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Spacer for opposite side */}
-                <div className="hidden md:block md:w-5/12"></div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Call to Action */}
         <div className="text-center mt-16">
-          <div className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 p-8 rounded-2xl border border-blue-500/30">
-            <h3 className="text-2xl font-bold text-white mb-4">Let's Build Something Amazing Together</h3>
-            <p className="text-slate-300 mb-6 max-w-2xl mx-auto">
+          <div className="bg-primary-500 text-white p-8 rounded-2xl shadow-xl">
+            <h3 className="text-2xl font-bold mb-4 font-serif">Let's Build Something Amazing Together</h3>
+            <p className="text-primary-100 mb-6 max-w-2xl mx-auto font-sans">
               Ready to collaborate on innovative projects? I'm always excited to work on challenging problems and create impactful solutions.
             </p>
             <button
               onClick={() => {
                 const contactSection = document.getElementById('contact');
                 if (contactSection) {
-                  contactSection.scrollIntoView({ behavior: 'smooth' });
+                  const headerOffset = 80;
+                  const elementPosition = contactSection.offsetTop - headerOffset;
+                  window.scrollTo({
+                    top: elementPosition,
+                    behavior: 'smooth'
+                  });
                 }
               }}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
+              className="bg-white text-primary-600 hover:bg-gray-50 font-semibold py-3 px-8 rounded-xl transition-all duration-300 transform hover:scale-105"
             >
               Get In Touch
             </button>
