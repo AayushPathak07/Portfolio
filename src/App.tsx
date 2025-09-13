@@ -6,6 +6,7 @@ import About from './components/About';
 import Accomplishments from './components/Accomplishments';
 import Projects from './components/Projects';
 import Blog from './components/Blog';
+import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CursorFollower from './components/CursorFollower';
 import ProjectDetailPage from './pages/ProjectDetailPage';
@@ -17,7 +18,7 @@ const MainPortfolioPage: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['Home', 'Work', 'About', 'Accomplishments', 'Blog'];
+      const sections = ['Home', 'Work', 'About', 'Accomplishments', 'Blog', 'Contact'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -48,6 +49,7 @@ const MainPortfolioPage: React.FC = () => {
         <About />
         <Accomplishments />
         <Blog />
+        
       </main>
       
       <Footer />
