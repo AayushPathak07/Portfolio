@@ -7,6 +7,7 @@ readTime: 7
 category: "Developer Tools"
 tags: ["PWA", "Privacy", "Offline", "WebDev"]
 technologies: ["PWA", "React", "Vite", "JavaScript"]
+image: "/images/justdevtools.png"
 featured: true
 slug: "justdev-tools"
 ---

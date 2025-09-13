@@ -13,7 +13,7 @@ tags:
     "Digital Transformation",
     "On-Prem",
   ]
-image: "images/Kidcentral_DevOps/blog-cover.png"
+image: "/images/Kidcentral_DevOps/blog-cover.png"
 featured: true
 slug: "from-homelab-to-production-devops-foundation"
 ---
@@ -44,7 +44,7 @@ The results: cost savings, faster deployments, live dashboards for managers, and
 
 ---
 
-![An example image description](public/images/Kidcentral_DevOps/kidcentral_visual1.png)
+![A high-level overview of the homelab infrastructure.](/images/Kidcentral_DevOps/kidcentral_visual1.png)
 
 ## Step 1: Proof of Concept
 
@@ -56,7 +56,7 @@ It was enough to justify investing in a modest server for on-prem experiments. T
 
 ---
 
-![An example image description](public/images/Kidcentral_DevOps/kidcentral_visual2.png)
+![An example image description](/images/Kidcentral_DevOps/kidcentral_visual2.png)
 
 ## Step 2: Standing Up Infrastructure
 
@@ -68,7 +68,7 @@ It wasn’t huge. But it was stable, expandable, and ours.
 
 ---
 
-![An example image description](public/images/Kidcentral_DevOps/kidcentral_visual3.png)
+![An example image description](/images/Kidcentral_DevOps/kidcentral_visual3.png)
 
 ## Step 3: Deployments and Automation
 
