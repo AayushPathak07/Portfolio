@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
               Backend Engineer passionate about building scalable systems and solving complex technical challenges. 
               Turning ideas into robust, high-performance solutions.
             </p>
-            <div className="flex items-center space-x-2 text-gray-500 text-sm font-sans">
+            <div className="flex items-center space-x-1.5 text-gray-500 text-sm font-sans">
               <span>Built with</span>
               <HiHeart size={16} className="text-error-500" />
               <span>using</span>

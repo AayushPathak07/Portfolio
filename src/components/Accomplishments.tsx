@@ -81,33 +81,33 @@ const Accomplishments: React.FC = () => {
 
         <div className="grid md:grid-cols-2 gap-8 md:items-start">
           {accomplishments.map((accomplishment, index) => (
-            <Reveal key={index}>
-              <div
-                className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group p-6"
-              >
-                <div className="flex items-start space-x-4">
-                  <div className="p-3 rounded-lg bg-primary-100">
-                    <accomplishment.icon className="text-primary-500" size={24} />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-medium text-primary-700">
-                        {accomplishment.date}
-                      </span>
+            <div key={index} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 group">
+              <Reveal>
+                <div className="transition-transform duration-300 transform group-hover:-translate-y-2 p-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="p-3 rounded-lg bg-primary-100">
+                      <accomplishment.icon className="text-primary-500" size={24} />
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
-                      {accomplishment.title}
-                    </h3>
-                    <p className="text-gray-500 font-medium mb-3">
-                      {accomplishment.organization}
-                    </p>
-                    <p className="text-gray-600 leading-relaxed">
-                      {accomplishment.description}
-                    </p>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-sm font-medium text-primary-700">
+                          {accomplishment.date}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
+                        {accomplishment.title}
+                      </h3>
+                      <p className="text-gray-500 font-medium mb-3">
+                        {accomplishment.organization}
+                      </p>
+                      <p className="text-gray-600 leading-relaxed">
+                        {accomplishment.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Reveal>
+              </Reveal>
+            </div>
           ))}
         </div>
       </div>

@@ -66,43 +66,43 @@ const Hero: React.FC = () => {
           </div>
 
           <div className="flex flex-wrap justify-center gap-4">
-            <Reveal>
-              <div className="flex items-center space-x-2 bg-primary-500 text-white px-6 py-3 rounded-full shadow-lg">
-                <HiLightningBolt className="text-white" size={20} />
-                <span className="font-medium">Backend Expert</span>
-              </div>
-            </Reveal>
-            <Reveal>
-              <div className="flex items-center space-x-2 bg-accent-500 text-white px-6 py-3 rounded-full shadow-lg">
-                <HiSparkles className="text-white" size={20} />
-                <span className="font-medium">Systems Design</span>
-              </div>
-            </Reveal>
+            <div className="bg-primary-500 text-white rounded-full shadow-lg">
+              <Reveal>
+                <div className="flex items-center space-x-2 px-6 py-3">
+                  <HiLightningBolt className="text-white" size={20} />
+                  <span className="font-medium">Backend Expert</span>
+                </div>
+              </Reveal>
+            </div>
+            <div className="bg-accent-500 text-white rounded-full shadow-lg">
+              <Reveal>
+                <div className="flex items-center space-x-2 px-6 py-3">
+                  <HiSparkles className="text-white" size={20} />
+                  <span className="font-medium">Systems Design</span>
+                </div>
+              </Reveal>
+            </div>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Reveal>
-              <a
-                href="https://github.com/aayushpathak07"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center space-x-2"
-              >
-                <FaGithub size={20} />
-                <span>View GitHub</span>
-              </a>
-            </Reveal>
-            <Reveal>
-              <a
-                href="https://linkedin.com/in/aayushpathak7"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white hover:bg-gray-50 text-primary-600 font-semibold py-3 px-6 rounded-xl border-2 border-primary-500 transition-all duration-300 transform hover:scale-105 flex items-center space-x-2"
-              >
-                <FaLinkedin size={20} />
-                <span>Connect on LinkedIn</span>
-              </a>
-            </Reveal>
+            <a
+              href="https://github.com/aayushpathak07"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 hover:shadow-lg flex items-center space-x-2"
+            >
+              <FaGithub size={20} />
+              <span>View GitHub</span>
+            </a>
+            <a
+              href="https://linkedin.com/in/aayushpathak7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white hover:bg-gray-50 text-primary-600 font-semibold py-3 px-6 rounded-xl border-2 border-primary-500 transition-all duration-300 flex items-center space-x-2"
+            >
+              <FaLinkedin size={20} />
+              <span>Connect on LinkedIn</span>
+            </a>
           </div>
 
           <div className="pt-16">

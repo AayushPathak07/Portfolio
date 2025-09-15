@@ -48,7 +48,7 @@ const Projects: React.FC = () => {
                   </div>
                 )}
                 
-                <div className="p-6">
+                <div className="p-6 bg-white">
                   <div className="flex items-center justify-between mb-3">
                     <span className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm font-medium">
                       {project.category}

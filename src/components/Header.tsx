@@ -2,6 +2,7 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { HiMenu, HiX } from "react-icons/hi";
 import myLogo from "../assets/aayush.jpg";
+
 interface HeaderProps {
   activeSection: string;
 }
@@ -37,12 +38,14 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
+    <header
+      className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200"
+      style={{ boxShadow: "0 2px 15px -3px rgba(0, 0, 0, 0.07)" }}
+    >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
             <div className="flex items-center space-x-2">
-              {/* Replace icon with your own image */}
               <div className="w-8 h-8 rounded-lg overflow-hidden">
                 <img
                   src={myLogo}
@@ -64,7 +67,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
                   onClick={() => handleNavClick(item.id)}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                     activeSection === item.label
-                      ? "bg-primary-500 text-white shadow-lg"
+                      ? "bg-primary-500 text-white shadow-md"
                       : "text-gray-700 hover:text-primary-600 hover:bg-primary-50"
                   }`}
                 >

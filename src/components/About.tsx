@@ -49,7 +49,7 @@ const About: React.FC = () => {
     iconColor: string;
     technologies: Array<{
       name: string;
-      icon: React.ComponentType<any>;
+      icon: React.ComponentType<any> | string;
       color: string;
       category: string;
     }>;
@@ -61,17 +61,26 @@ const About: React.FC = () => {
           {title}
         </h3>
       </Reveal>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {technologies.map((tech, index) => (
           <Reveal key={index}>
-            <div
-              className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 p-4 text-center group"
-            >
-              <tech.icon
-                className={`mx-auto mb-3 ${tech.color} group-hover:scale-110 transition-transform`}
-                size={32}
-              />
-              <h4 className="font-semibold text-gray-900 font-sans">
+            <div className="group flex flex-col items-center">
+              <div
+                className={`w-24 h-24 rounded-full flex items-center justify-center bg-white shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:-translate-y-2 mb-3`}
+              >
+                {typeof tech.icon === "string" ? (
+                  <img
+                    src={tech.icon}
+                    alt={tech.name}
+                    className="h-12 w-12 object-contain rounded-md"
+                  />
+                ) : (
+                  <tech.icon
+                    className={`h-12 w-12 ${tech.color} transition-transform`}
+                  />
+                )}
+              </div>
+              <h4 className="font-semibold text-gray-900 font-sans text-center">
                 {tech.name}
               </h4>
             </div>
@@ -133,21 +142,27 @@ const About: React.FC = () => {
             </Reveal>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-1 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-1 gap-4 lg:max-w-xs justify-self-center">
             {stats.map((stat, index) => (
-              <Reveal key={index}>
-                <div
-                  className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 p-6 text-center"
-                >
-                  <stat.icon className={`mx-auto mb-3 ${stat.color}`} size={32} />
-                  <div className="text-2xl font-bold text-gray-900 mb-1 font-serif">
-                    {stat.value}
+              <div
+                key={index}
+                className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 w-36 h-36 flex items-center justify-center mx-auto"
+              >
+                <Reveal>
+                  <div className="text-center">
+                    <stat.icon
+                      className={`mx-auto mb-2 ${stat.color}`}
+                      size={28}
+                    />
+                    <div className="text-xl font-bold text-gray-900 font-serif">
+                      {stat.value}
+                    </div>
+                    <div className="text-gray-600 text-xs font-sans">
+                      {stat.label}
+                    </div>
                   </div>
-                  <div className="text-gray-600 text-sm font-sans">
-                    {stat.label}
-                  </div>
-                </div>
-              </Reveal>
+                </Reveal>
+              </div>
             ))}
           </div>
         </div>
