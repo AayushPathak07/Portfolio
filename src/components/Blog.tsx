@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HiCalendar, HiClock, HiArrowRight, HiTag, HiSearch } from 'react-icons/hi';
-import { blogPosts, BlogPost } from '../data/content';
+import { blogPosts } from '../data/content';
 
 const Blog: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
