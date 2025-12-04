@@ -175,7 +175,23 @@ textarea:focus {
 }
 
 .prose pre code {
-  color: inherit;
+  color: inherit !important;
+  background-color: transparent !important;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   white-space: pre;
+  padding: 0;
+}
+
+/* Remove backticks/padding that typography plugin adds on inline code,
+   and ensure inline code stays readable on light background */
+.prose code::before,
+.prose code::after {
+  content: none;
+}
+
+.prose code {
+  color: #0f172a;
+  background-color: #e5e7eb;
+  border-radius: 4px;
+  padding: 0.1rem 0.25rem;
 }
