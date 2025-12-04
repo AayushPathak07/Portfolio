@@ -165,3 +165,17 @@ textarea:focus {
     opacity: 0;
   }
 }
+
+/* Code blocks */
+.prose pre {
+  background-color: #0f172a;
+  color: #e5e7eb;
+  border-radius: 12px;
+  overflow-x: auto;
+}
+
+.prose pre code {
+  color: inherit;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  white-space: pre;
+}
