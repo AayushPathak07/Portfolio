@@ -13,7 +13,7 @@ tags:
     "ML Engineering",
     "Zero-Shot Models",
   ]
-image: "/images/Kidcentral_ML/blog-cover.png"
+image: "/images/zero-shot-to-production-image-classification/main.png"
 featured: true
 slug: "zero-shot-to-production-image-classification"
 ---
