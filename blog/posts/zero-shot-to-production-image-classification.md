@@ -1,7 +1,7 @@
 ---
 title: "From Zero-Shot to Production: A Practical Image Classification Workflow"
 excerpt: "How I built a lightweight ML system to classify 45k+ vendor product images using zero-shot CLIP, classical ML, and active learning - applied, grounded, and shaped by what I've learned in school and at work."
-date: "2025-09-04"
+date: "2025-12-04"
 readTime: 7
 author: "Aayush Pathak"
 category: "Case Study"
@@ -31,10 +31,10 @@ Vendors often send us ZIP files containing tens of thousands of mixed images - p
 Manually sorting 45,000+ images wasn't realistic.
 Instead of treating this as a full "ML initiative," I approached it the way I've tackled projects in my homelab or at school:
 
-* start simple
-* build only what's needed
-* iterate as you learn
-* keep the system practical
+- start simple
+- build only what's needed
+- iterate as you learn
+- keep the system practical
 
 That mindset led to a lightweight ML workflow that handled the entire dataset with only a few hundred human labels.
 
@@ -106,10 +106,10 @@ Implementation notes:
 - CLIP packaging semantics are prompt-sensitive; packaging vs. unpackaged is not a native class, so prompts need tuning and still fluctuate
 
 ![CLIP architecture sketch showing dual encoders](/images/zero-shot-to-production-image-classification/clip_architecture_sketch.png)
-*Source: Pinecone guide to multi-modal ML with CLIP.*
+_Source: Pinecone guide to multi-modal ML with CLIP._
 
 ![CLIP contrastive pretraining and zero-shot pipeline](/images/zero-shot-to-production-image-classification/clip_pipeline_combined.png)
-*Source: LearnOpenCV CLIP tutorial.*
+_Source: LearnOpenCV CLIP tutorial._
 
 ---
 
@@ -138,7 +138,7 @@ Persistence and guardrails:
 - The Qt and web labelers retrain every 10 labels so the model keeps getting sharper during a session
 
 ![Logistic sigmoid curve](/images/zero-shot-to-production-image-classification/logistic_curve.png)
-*Source: Wikimedia Commons (“Logistic-curve.svg”).*
+_Source: Wikimedia Commons (“Logistic-curve.svg”)._
 
 ---
 
@@ -178,7 +178,7 @@ Details:
 - True fusion is not implemented yet; blending all signals when LR is near 0.5 would be more robust than hard precedence
 
 ![KMeans convergence illustration](/images/zero-shot-to-production-image-classification/kmeans_convergence.png)
-*Source: Wikipedia K-means clustering article (convergence example).*
+_Source: Wikipedia K-means clustering article (convergence example)._
 
 ---
 
@@ -250,7 +250,7 @@ How the queue is built:
 - Global stats (confidence rate, packaged ratio, average margin) are computed upfront to give labeling context
 
 ![Active learning loop diagram](/images/zero-shot-to-production-image-classification/active_learning_diagram.png)
-*Source: Neptune AI (diagram of active learning system).*
+_Source: Neptune AI (diagram of active learning system)._
 
 ---
 
